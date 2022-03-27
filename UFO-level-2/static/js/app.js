@@ -22,16 +22,36 @@ var button = d3.select("#filter-btn");
 button.on("click", function(event){
   d3.event.preventDefault();
   tablebody.html("");
+  var inputElement = d3.select("#datetime");
+  var inputValue = inputElement.property("value");
+  var cityInput = d3.select('#city').property("value");
+  var stateInput = d3.select("#state").property("value");
+  var countryInput = d3.select("#country").property("value");
+  var shapeInput = d3.select("#shape").property("value");
+  console.log(cityInput);
 
-var inputElement = d3.select("#datetime");
-var inputValue = inputElement.property("value");
+  var filteredData = datatable;
+  if (inputValue) {
+    filteredData = filteredData.filter(row => row.datetime === inputValue);
+  }
+  if (cityInput){
+    filteredData = filteredData.filter(row => row.city === cityInput);
+  }
+  if (stateInput){
+    filteredData = filteredData.filter(row => row.state === stateInput);
+  }
+  if (countryInput){
+    filteredData = filteredData.filter(row => row.country === countryInput)
+  }
+  if (shapeInput){
+    filteredData = filteredData.filter(row => row.shape === shapeInput)
+  }
 
-var filteredData = tableData.filter(tableData => tableData.datetime === inputValue);
 filteredData.forEach(function(dateData){
   var row=tablebody.append("tr");
   Object.entries(dateData).forEach(function([key,value]){
-    var cell=tablebody.append("td");
-    cell.text(value);
+  var cell=tablebody.append("td");
+  cell.text(value);
         })
     })
 })
