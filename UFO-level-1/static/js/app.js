@@ -30,8 +30,8 @@ var filteredData = tableData.filter(tableData => tableData.datetime === inputVal
 filteredData.forEach(function(dateData){
   var row=tablebody.append("tr");
   Object.entries(dateData).forEach(function([key,value]){
-    var cell=tablebody.append("td");
-    cell.text(value);
+  var cell=tablebody.append("td");
+  cell.text(value);
         })
     })
 })
