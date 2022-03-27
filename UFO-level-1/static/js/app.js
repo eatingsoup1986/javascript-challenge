@@ -26,7 +26,7 @@ button.on("click", function(event){
 var inputElement = d3.select("#datetime");
 var inputValue = inputElement.property("value");
 
-var filteredData = tableData.filter(tableData => tableData.datetime === inputValue);
+var filteredData = datatable.filter(datatable => datatable.datetime === inputValue);
 filteredData.forEach(function(dateData){
   var row=tablebody.append("tr");
   Object.entries(dateData).forEach(function([key,value]){
